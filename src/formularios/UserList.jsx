@@ -1,5 +1,6 @@
 export const  UserList = ({users}) => {
-  <ul>
+  return (
+    <ul>
     {users.map((user) => (
         <li key={user.id}>
           <strong> Name:</strong> {user.name}, 
@@ -10,4 +11,5 @@ export const  UserList = ({users}) => {
         </li>
       ))}
     </ul>
+  )
 };

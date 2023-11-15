@@ -1,8 +1,8 @@
-import { UserForm } from "./UserForm";
-import { UserList } from "./UserList";
-
 import { useState } from "react";
 import { v4 } from "uuid";
+
+import { UserForm } from "./UserForm";
+import { UserList } from "./UserList";
 
 export const User = () => {
   const [users, setUsers] = useState([])
@@ -39,7 +39,7 @@ export const User = () => {
       email,
     };
     setUsers([...users, nuevoUsuario]);
-    console.log(users);
+    // console.log(users);
     setName('');
     setLastName('');
     setAge('');
