@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { v4 } from "uuid";
+import { useEffect, useState } from "react";
+// import { v4 } from "uuid";
 
+import { userService } from "../services/userService";
 import { UserForm } from "./UserForm";
 import { UserList } from "./UserList";
 
@@ -28,17 +29,29 @@ export const User = () => {
     setEmail(event.target.value);
   }
   
+  useEffect(() => {
+    userService
+    .getAll()
+    .then( user => {
+      setUsers(user)
+    })
+  },[])
+
   const addRecord = (event) => {
     event.preventDefault();
-    const nuevoUsuario = {
-      id: v4(),
+    const newUser = {
       name,
       lastName,
-      age,
-      phone,
+      age: +age,
+      phone: +phone,
       email,
     };
-    setUsers([...users, nuevoUsuario]);
+    userService
+    .create(newUser)
+    .then(response => {
+      setUsers(users.concat(response.data))
+    })
+    setUsers([...users, newUser]);
     // console.log(users);
     setName('');
     setLastName('');

@@ -14,19 +14,19 @@ export const UserForm = ({
   return (
     <form onSubmit={addRecord}>
       <div>
-        Name: <input value={name} onChange={handleNameInputChange} />
+        Name: <input type={"text"} value={name} onChange={handleNameInputChange} />
       </div>
       <div>
-        Last Name: <input value={lastName} onChange={handleLastNameInputChange} />
+        Last Name: <input type={"text"} value={lastName} onChange={handleLastNameInputChange} />
       </div>
       <div>
-        Age: <input value={age} onChange={handleAgeInputChange} />
+        Age: <input type={"number"} value={age} onChange={handleAgeInputChange} />
       </div>
       <div>
-        Phone: <input value={phone} onChange={handlePhoneInputChange} />
+        Phone: <input type={"number"} value={phone} onChange={handlePhoneInputChange} />
       </div>
       <div>
-        E-mail: <input value={email} onChange={handleEmailInputChange} />
+        E-mail: <input type={"email"} value={email} onChange={handleEmailInputChange} />
       </div>
       <div>
         <button type="submit">add</button>
