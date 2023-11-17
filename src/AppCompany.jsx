@@ -3,9 +3,10 @@ import { v4 } from "uuid";
 
 import { CompanyForm } from "./CompanyForm";
 import { CompanyList } from "./CompanyList";
+import { companyCervice } from "./services/companyCervice";
 
 const AppCompany = () => {
-
+  
   const [ companies, setCompanies ] = useState([]);
   const [ name, setName ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -29,8 +30,14 @@ const AppCompany = () => {
       email,
       phone,
     };
-    setCompanies([...companies, newCompany]);
-    console.log(companies, 'companies');
+    companyCervice
+    .create(newCompany)
+    .then(response => {
+      setCompanies(companies.concat(response.data))
+    })
+
+    // setCompanies([...companies, newCompany]);
+    // console.log(companies, 'companies');
     setName('');
     setEmail('');
     SetPhone('');
